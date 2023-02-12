@@ -1,0 +1,401 @@
+@charset "utf-8";
+
+/*
+Author: Benjamin McNeilly
+Date: Oct. 19/2022
+
+Filename: portfolio_styles.css
+*/
+
+/*#region Standard styles consistent across mediums */
+html, body {
+    min-height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.header h1 {
+    margin: 0;
+}
+a:link { 
+    text-decoration: none; 
+}
+ul {
+    list-style: none;
+}
+
+/* Context for my Profile picture in index.html */
+#picture p {
+    text-align: left;
+    padding-left: 40px;
+    padding-bottom: 3px;
+}
+#picture {
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 0px 3px 5px black;
+    box-shadow: 0px 3px 100px rgb(92, 169, 218);
+    border-radius: 200px;
+}
+#picture {
+    background-image: url("me.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    object-fit: cover;
+}
+#picture p {
+    text-align: left;
+    padding-left: 40px;
+    padding-bottom: 3px;
+}
+
+/* Nav Styles */
+#nav ul li {
+    box-shadow: 0px 3px 5px #08124b;
+}
+#nav li a {
+    text-decoration: none;
+    color: white;
+    text-shadow: 0px 3px 5px rgb(92, 169, 218);
+}
+#nav li {
+    background-color: rgb(51,51,51);
+    border-radius: 20px;
+    padding: 10px;
+    list-style: none;
+}
+#nav li a:hover {
+    text-decoration: none;
+    color: rgb(171, 207, 230);
+    padding: 5px;
+    border-radius: 5px;
+    padding: 1px;
+    text-shadow: 0px 3px 5px rgb(92, 169, 218);
+}
+
+/* Contacts.html Shared Styles*/
+#contactCards {
+    box-shadow: 0px 3px 5px rgb(92, 169, 218);
+    border-radius: 40px;
+    margin: 20px;
+}
+#contactCards:hover {
+    background-color: rgba(255, 255, 255,0.5);
+}
+#contactCards a:link, article {
+    text-decoration: none;
+    color: white;
+}
+
+/* SKILLS PAGE */
+#skills {
+    color: white;
+    text-align: justify;
+    text-shadow: 0px 3px 5px black;
+}
+
+table {
+    border: 3px solid black;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {    
+    vertical-align: top;
+    border: 3px solid grey;
+}
+
+/*#endregion p */
+/*#region Phone Screen Size */
+@media only screen and (max-width: 480px){
+    .container {
+        display: grid;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        text-shadow: 0px 3px 5px black;
+        box-shadow: 0px 3px 5px rgb(92, 169, 218);
+        border-radius: 220px;    
+        grid-row: 3 !important;
+    }    
+    footer {
+        display: none;
+    }
+    body {
+        background-color: black;
+    }
+    body {
+        grid-row: 2;
+        background-image: url('DesktopBackground.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    /* Contacts Page Details */
+    body #contacts {
+        grid-row: 2;
+        background-image: url('images/Contactsback.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    #contactCards {
+        border-top: 1px white;
+    }
+
+    /* Future.htmnl page */
+    body #mainFuture {
+        grid-row: 2;
+        background-image: url('future.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        text-align: center;
+    }
+    /* Skills.html */
+    body #contacts {
+        grid-row: 2;
+        background-image: url('skills.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    thead, th {
+        font-size: 9px;
+    }
+    /* Resume.html */
+    body #mainResume {
+        grid-row: 2;
+        background-image: url('resume.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 0px;
+    }
+    /*Navicon Display */
+    a#navicon {
+        display: block;
+    }
+    nav ul {
+        display: none;
+        text-align: center;
+        align-items: center;
+        padding: 0px;        
+    }
+    nav ul li {
+       width: 40%;
+       margin: auto;
+       margin-bottom: 5px;        
+    }
+    a#navicon:hover+ul, nav ul:hover {
+        display: block;
+    }    
+    /*Navicon Picture */
+    a#navicon img {
+        width: 25px;
+        height: 25px;
+    }    
+}
+/*#endregion  */
+/*#region Tablet and Desktop */
+@media only screen and (min-width: 481px){
+    /*#region primary background  */
+    /* Background Control I recognize that there is a more efficient way of doing this */
+    #navicon {
+        display: none;
+    }
+    #main {    
+        background-image: url('DesktopBackground.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center 0%;
+        position: relative;
+        z-index: 1;
+        border-top: 20px;
+        border-bottom:10px solid black;   
+        box-shadow: 0px 6px 10px black;  
+    }
+    #contacts {
+        background-image: url('images/Contactsback.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center 0%;
+        position: relative;
+        z-index: 1;
+        padding-top: 100px;
+        border-bottom:10px solid black;   
+        box-shadow: 0px 6px 10px black;  
+    }
+    #mainFuture {
+        background-image: url('future.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left 0%;
+        position: relative;
+        z-index: 1;
+        padding-top: 100px;
+        border-bottom:10px solid black;   
+        box-shadow: 0px 6px 10px black;  
+    }
+    #mainSkills {
+        background-image: url('skills.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left 0%;
+        position: relative;
+        z-index: 1;
+        padding-top: 100px;
+        border-bottom:10px solid black;   
+        box-shadow: 0px 6px 10px black;  
+    }
+    #mainResume {
+        background-image: url('resume.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left 0%;
+        position: relative;
+        z-index: 1;
+        padding-top: 100px;
+        border-bottom:10px solid black;   
+        box-shadow: 0px 6px 10px black;  
+    }
+    /*#endregion Primary background */
+
+    /*#region content styles for pages */
+    /* Summary page  */
+    #summary {
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        text-shadow: 0px 3px 5px black;
+        box-shadow: 0px 3px 5px rgb(92, 169, 218);
+        border-radius: 175px;    
+    }
+    #summary p h2 {
+        font-size: 25px;
+    }
+    /* CONTACT SECTION */
+    #contentContacts {
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        text-shadow: 0px 3px 5px black;
+        border-top: 40px;
+        border-radius: 175px;    
+    }
+    #contentContacts p h2 {
+        font-size: 25px;
+    }
+    .contactCards {
+        box-shadow: 0px 3px 5px rgb(92, 169, 218);
+        border-radius: 40px;
+        margin: 20px;
+    }
+    .contactCards:hover {
+        background-color: rgba(255, 255, 255,0.5);
+    }
+    .contactCards a:link, article {
+        text-decoration: none;
+        color: white;
+    }
+
+    /* FUTURE GOALS */
+    #future, #future2 {
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        text-shadow: 0px 3px 5px black;
+        box-shadow: 0px 3px 5px rgb(92, 169, 218);
+        border-radius: 175px;    
+    }
+    #future p h2 {
+        font-size: 25px;
+    }
+    #future2 p h2 {
+        font-size: 25px;
+    }
+    #mainFuture ul li {
+        list-style: none;
+    }
+
+    /* Resume Page */
+    #tools, #education, #experience, .summary1 {
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        text-shadow: 0px 3px 5px black;
+        border-radius: 175px;    
+    }
+
+    /*#endregion content styles for pages */
+
+    /*#region NavStyles  */
+    /* Nav Background */
+    #nav ul li {
+        box-shadow: 0px 3px 5px #08124b;
+    }
+    #nav li a {
+        text-decoration: none;
+        color: white;
+        text-shadow: 0px 3px 5px rgb(92, 169, 218);
+    }
+    #nav li {
+        background-color: rgb(51,51,51);
+        border-radius: 20px;
+        padding: 10px;
+        list-style: none;
+    }
+    #nav li a:hover {
+        text-decoration: none;
+        color: rgb(171, 207, 230);
+        padding: 5px;
+        border-radius: 5px;
+        padding: 1px;
+        text-shadow: 0px 3px 5px rgb(92, 169, 218);
+    }
+
+    #nav {
+        background-image: url(images/NavBackground.jpg);
+        background-repeat: no-repeat;
+        border-bottom:10px solid black;
+        padding: 0.1px;
+        position: fixed;
+        height: 6%;
+        width: 100%;
+        z-index: 2;
+        box-shadow: 0px 3px 5px rgb(92, 169, 218);
+    }
+    /*#endregion Navstyles  */
+    
+    /*#region footer Styles */
+    footer {
+        border-top: 2px solid rgb(51, 51, 51);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        padding-bottom: 10px;
+    }
+    footer h2 {
+        text-shadow: 0px 3px 5px black;
+    }
+    #socialMedia img {
+        width: 50px;
+        height: 50px;
+        border-radius: 40px;
+        box-shadow: 0px 3px 5px black;
+        margin-top: 20px;
+    }
+    #socialMedia img:hover {    
+        box-shadow:0px 3px 5px rgb(92, 169, 218), 0px 10px 10px black;
+        cursor: pointer;
+    }    
+    footer {
+        background-image: url(images/NavBackgroundUp.jpg);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border-bottom:10px solid black;
+    }
+    /*#endregion*/
+}
+/*#endregion  */
+
+
+

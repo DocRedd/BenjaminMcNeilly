@@ -1,0 +1,162 @@
+@charset "utf-8";
+
+/*
+Author: Benjamin McNeilly
+Date: Oct. 19/2022
+
+Filename: portfolio_layout.css
+*/
+
+html {
+    overflow-x: hidden;
+}
+
+/*#region Phone Screen Size */
+@media only screen and (max-width: 480px){
+    body {
+       
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: auto 0px 997px;
+        column-gap: 5%;
+        row-gap: 25px;
+        grid-column: 1;
+        grid-row: auto;           
+      
+    }
+    .container #main {
+        grid-row: 2 / span 3;
+    }
+}
+/*#endregion Phone Screen Size  */
+
+/*#region Tablet and Desktop */
+@media only screen and (min-width: 481px){
+    /*Page layout */
+
+    body {
+        margin: 0px;
+    }
+
+    /*Nav Layout Control*/
+
+    #nav ul {
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-flow: row wrap;
+        vertical-align: top;
+        margin: 10px;
+    }
+
+    /* Main Layout Set */
+    #main {
+        display: grid;
+        grid-template-columns: 0px 50px 166px 200px 200px 200px;
+        grid-template-rows: 55px 54px 222px 200px 200px 200px;
+        column-gap: 5%;
+        row-gap: 25px;
+        grid-column: span 5;
+        grid-row: 1 / span 6;    
+    }
+    #Contacts {
+        display: grid;
+        grid-template-columns: 0px 50px 166px 200px 200px 200px;
+        grid-template-rows: 55px 54px 222px 200px 200px 200px;
+        column-gap: 5%;
+        row-gap: 25px;
+        grid-column: span 5;
+        grid-row: 1 / span 6;    
+    }
+    #mainFuture {
+        display: grid;
+        grid-template-columns: 410px 50px auto 34px 10px 11px;
+        grid-template-rows: 251px 54px 222px 47px 61px 17px;
+        column-gap: 5%;
+        row-gap: 26px;
+        grid-column: span 5;
+        grid-row: 1 / span 6;    
+    }
+    #mainSkills {
+        display: grid;
+        grid-template-columns: 278px 7px 232px 34px 3px 5px;
+        grid-template-rows: 251px 54px 222px 47px 61px 17px;
+        column-gap: 5%;
+        row-gap: 26px;
+        grid-column: span 5;
+        grid-row: 1 / span 6;
+    }
+
+    #mainResume {
+        display: grid;
+        grid-template-columns: 278px 7px 232px 34px 3px 5px;
+        grid-template-rows: 251px 54px 222px 47px 61px 17px;
+        column-gap: 5%;
+        row-gap: 26px;
+        grid-column: span 5;
+        grid-row: 1 / span 6;
+    }
+
+    /* Basic Grid container */
+    #summary, #contentContacts {
+        display: grid;
+        grid-column: 2 / span 2;
+        grid-row: 4 / span 5;
+        margin-bottom: 60px;
+        padding: 0px;
+    }
+
+    /* Future.html Formatting */
+    #future1 {
+        display: grid;
+        grid-column: 2 / span 2;
+        grid-row: 4 / span 5;
+        margin-bottom: 60px;
+        padding: 0px;
+    }
+    #future2 {
+        display: grid;
+        grid-column: 5 / span 6;
+        grid-row: 2 / span 4;
+        margin-bottom: 60px;
+        padding: 0px;
+    }
+    /* Layout for my profile pick on index.html */
+    #picture {
+        display: grid;
+        grid-column: 2 / span 2;
+        grid-row: 2 / span 2;
+    }
+    #picture, p, h2 {
+        margin: 42px;
+        padding: 0px;
+    }
+    /* Skills Layout */
+    #skills {
+        grid-column: 5 / span 5;
+        grid-row: 1 / span 6;
+    }
+
+    /* Resume Layout */
+    #tools {
+        display: grid;
+        grid-column: 2 / span 2;
+        grid-row: 1;
+    }
+    #experience {
+        display: grid;
+        grid-column: 5 / span 6;
+        grid-row: 2 / span 4;
+        margin-bottom: 60px;
+        padding: 0px;
+    }
+    #education {
+        display: grid;
+        grid-column: 5 / span 6;
+        grid-row: 1; 
+        padding: 0px;
+    }
+    
+}
+/*#endregion */
