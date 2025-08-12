@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Magic Isles | D&D Homebrew World</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom styles for the map */
+        .map-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .map-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .region {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 215, 0, 0.7);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .region:hover {
+            background-color: rgba(255, 215, 0, 0.5);
+            transform: scale(1.2);
+        }
+        
+        .region-tooltip {
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 250px;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        }
+        
+        .region-tooltip h3 {
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+        
+        .close-tooltip {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            cursor: pointer;
+            color: #fbbf24;
+        }
+        
+
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-dragon text-yellow-400 text-2xl"></i>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Lore</a>
+                            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Characters</a>
+                            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Quests</a>
+                            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Bestiary</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none">
+                            <i class="fas fa-search h-6 w-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-purple-900 to-blue-900 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-4">The Magic Isles</h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8">A D&D Homebrew World of Wonder and Mystery</p>
+            <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105">
+                Begin Your Adventure
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-yellow-400 mb-6 text-center">Explore the Isles</h2>
+            <p class="text-gray-300 mb-8 text-center max-w-3xl mx-auto">
+                The Magic Isles are a scattered archipelago where arcane energy flows like water. Each island possesses unique magical properties, 
+                creating diverse ecosystems and cultures shaped by the very essence of magic itself.
+            </p>
+            
+            <!-- Interactive Map -->
+            <div class="map-container mb-12">
+                <img src="MagicIsles.jpg" alt="Map of The Magic Isles" class="map-image pulse">
+
+                
+                <!-- Region markers (positioned absolutely over the map) -->
+                <div class="region" style="top: 32.5%; left: 28%;" data-region="Turtleback Captial"></div>
+                <div class="region" style="top: 34.5%; left: 33.5%;" data-region="crystalfall"></div>
+                <div class="region" style="top: 55%; left: 15%;" data-region="verdantveil"></div>
+                <div class="region" style="top: 70%; left: 75%;" data-region="stormspire"></div>
+                <div class="region" style="top: 40%; left: 40%;" data-region="the-hollow"></div>
+                
+                <!-- Region tooltips -->
+                <div class="region-tooltip" id="Turtleback Captial-tooltip">
+                    <span class="close-tooltip"><i class="fas fa-times"></i></span>
+                    <h3>Turtleback Captial</h3>
+                    <p>A volcanic archipelago where fire magic runs wild. Home to the Ashborn dwarves who forge legendary weapons in the heart of active volcanoes.</p>
+                    <p class="text-yellow-300 mt-2"><i class="fas fa-fire mr-2"></i> Fire magic amplified 3x</p>
+                    <p class="text-blue-300"><i class="fas fa-water mr-2"></i> Water magic weakened</p>
+                </div>
+                
+                <div class="region-tooltip" id="crystalfall-tooltip">
+                    <span class="close-tooltip"><i class="fas fa-times"></i></span>
+                    <h3>Crystalfall Dominion</h3>
+                    <p>A floating island where gravity is optional and massive crystal formations grow like trees. The Gnomish Sky Scholars study the arcane mysteries here.</p>
+                    <p class="text-purple-300 mt-2"><i class="fas fa-magic mr-2"></i> All magic has random effects</p>
+                    <p class="text-green-300"><i class="fas fa-feather-alt mr-2"></i> Gravity reduced by 50%</p>
+                </div>
+                
+                <div class="region-tooltip" id="verdantveil-tooltip">
+                    <span class="close-tooltip"><i class="fas fa-times"></i></span>
+                    <h3>Verdant Veil</h3>
+                    <p>A massive jungle island where plants grow at accelerated rates. The Elven Druids guard ancient secrets in their tree-top cities.</p>
+                    <p class="text-green-500 mt-2"><i class="fas fa-leaf mr-2"></i> Plant magic amplified 5x</p>
+                    <p class="text-red-300"><i class="fas fa-ban mr-2"></i> Metal rusts within hours</p>
+                </div>
+                
+                <div class="region-tooltip" id="stormspire-tooltip">
+                    <span class="close-tooltip"><i class="fas fa-times"></i></span>
+                    <h3>Stormspire Atoll</h3>
+                    <p>A ring of small islands constantly battered by magical storms. The Triton Stormcallers navigate these waters, harvesting lightning for their arcane batteries.</p>
+                    <p class="text-blue-400 mt-2"><i class="fas fa-bolt mr-2"></i> Lightning magic amplified 10x</p>
+                    <p class="text-gray-300"><i class="fas fa-cloud-rain mr-2"></i> Permanent storm conditions</p>
+                </div>
+                
+                <div class="region-tooltip" id="the-hollow-tooltip">
+                    <span class="close-tooltip"><i class="fas fa-times"></i></span>
+                    <h3>The Hollow</h3>
+                    <p>A massive sinkhole island with a labyrinth of tunnels leading to the Underdark. The mysterious Hollowborn humans trade in secrets and forbidden knowledge.</p>
+                    <p class="text-gray-400 mt-2"><i class="fas fa-moon mr-2"></i> Shadow magic amplified</p>
+                    <p class="text-red-500"><i class="fas fa-sun mr-2"></i> Sunlight causes damage</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="text-yellow-400 text-3xl mb-4">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">World Lore</h3>
+                    <p class="text-gray-300">Discover the rich history and cultures of The Magic Isles, from the Ashborn Dwarves to the Gnomish Sky Scholars.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="text-yellow-400 text-3xl mb-4">
+                        <i class="fas fa-dungeon"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Adventure Hooks</h3>
+                    <p class="text-gray-300">Ready-to-play quests and storylines set across the various islands of the archipelago.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="text-yellow-400 text-3xl mb-4">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Unique Creatures</h3>
+                    <p class="text-gray-300">Encounter beasts and monsters evolved by the magical energies of the islands.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-yellow-400 mb-6 text-center">Magic in The Isles</h2>
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-6 md:mb-0 md:pr-6">
+                        <img src="https://images.unsplash.com/photo-1518562180175-34a163b1a9a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Magic in The Isles" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-bold mb-4 text-yellow-300">The Weave of The Isles</h3>
+                        <p class="text-gray-300 mb-4">
+                            Unlike other worlds, magic in The Magic Isles isn't drawn from distant planes or deities - it's part of the very land itself. 
+                            The islands float on a sea of liquid magic, and this proximity to raw arcane energy has shaped everything about this world.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            Each major island has its own magical resonance that affects spellcasting in unique ways. Wizards must adapt their techniques 
+                            when traveling between islands, while sorcerers find their powers fluctuating with the local magical currents.
+                        </p>
+                        <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded transition duration-300">
+                            Learn About Magic Systems
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-yellow-400 text-lg font-bold mb-4">The Magic Isles</h3>
+                    <p>A D&D 5e homebrew campaign setting where magic shapes the land and its people in extraordinary ways.</p>
+                </div>
+                <div>
+                    <h3 class="text-yellow-400 text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-yellow-400 transition">Home</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Lore Compendium</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Player Resources</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">DM Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-yellow-400 text-lg font-bold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition"><i class="fab fa-discord text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition"><i class="fab fa-reddit text-2xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-yellow-400 text-lg font-bold mb-4">Newsletter</h3>
+                    <p>Subscribe for updates on new content and features.</p>
+                    <div class="mt-4 flex">
+                        <input type="email" placeholder="Your email" class="bg-gray-700 text-white px-4 py-2 rounded-l focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full">
+                        <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-4 py-2 rounded-r font-bold transition">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 The Magic Isles D&D Campaign. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all region elements
+            const regions = document.querySelectorAll('.region');
+            
+            // Add click event to each region
+            regions.forEach(region => {
+                region.addEventListener('click', function() {
+                    const regionId = this.getAttribute('data-region');
+                    const tooltip = document.getElementById(`${regionId}-tooltip`);
+                    
+                    // Position the tooltip near the clicked region
+                    document.addEventListener('mousemove', (e) => {
+                    const tooltipWidth = tooltip.offsetWidth;
+                    const tooltipHeight = tooltip.offsetHeight;
+                                      
+                    tooltip.style.top = `${e.clientY  }px`;
+                    tooltip.style.left = `${e.clientX  }px`;
+                  });
+
+                    
+                    // Show the tooltip
+                    tooltip.style.display = 'block';
+                    
+                    // Close other tooltips
+                    document.querySelectorAll('.region-tooltip').forEach(t => {
+                        if(t.id !== `${regionId}-tooltip`) {
+                            t.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Close tooltips when clicking the X
+            document.querySelectorAll('.close-tooltip').forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    this.parentElement.style.display = 'none';
+                });
+            });
+            
+            // Close tooltips when clicking outside
+            document.addEventListener('click', function(e) {
+                if(!e.target.closest('.region') && !e.target.closest('.region-tooltip')) {
+                    document.querySelectorAll('.region-tooltip').forEach(tooltip => {
+                        tooltip.style.display = 'none';
+                    });
+                }
+            });
+            
+            // Mobile menu toggle would go here
+        });
+    </script>
+</body>
+</html>
